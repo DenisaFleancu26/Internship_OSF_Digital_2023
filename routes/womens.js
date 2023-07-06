@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+
+  res.locals.isWomensPage = true;
+  
+  res.render('', {layout:'layout', isWomensPage: res.locals.isWomensPage});
 });
 
 module.exports = router;
