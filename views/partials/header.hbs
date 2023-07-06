@@ -1,0 +1,27 @@
+<nav class="navbar">
+    <div class="brand">
+        <img src="images/favicon.png" class="logo" alt="">
+        <h1 class="title">Store</h1>
+    </div>
+          <div class="categories">
+            <div class="categ">
+              <a class="button1" href="/womens" >Womens</a>
+              <a class="button2" href="/mens" >Mens</a>
+            </div>
+          </div>
+</nav>
+  <ol class="breadcrumbs">
+    <li><a class="breadcrumb" href="/">Home</a> </li>
+      {{#if isWomensPage}}
+      <li> <a class="breadcrumb" href="/womens">Women</a></li> 
+      {{/if}}
+      {{#if isWomensPages}}
+      <li> <a class="breadcrumb" href="/womenss">Womens</a></li> 
+      {{/if}}
+      {{#if isMensPage}}
+        <li> <a class="breadcrumb" href="/mens">Men</a> </li>
+      {{/if}}
+      {{#if isProductPage}}
+        <li><a href="/{{product.name}}" class="breadcrumb">{{product.name}}</a></li> 
+      {{/if}}
+  </ol>
