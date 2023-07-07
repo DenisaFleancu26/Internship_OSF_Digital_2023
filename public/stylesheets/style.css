@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande";
+  padding: 10px;
 }
 
 .nav{
@@ -7,7 +8,7 @@ body {
   width: 100%;
   background-color: white;
   top: 0%;
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0px 0px 0px 40px;
 }
 .navbar{
   display:flex;
@@ -15,7 +16,7 @@ body {
   padding-left: 40px;
   height: 70px;
   background-color:#63b8dc40;
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0px 0px 0px 40px;
 }
 .logo{
   padding: 5px;
@@ -108,4 +109,31 @@ body {
 
 .breadcrumb:hover{
   color: #08678d;
- }
+}
+
+h1{
+  color: #1784ddbc;
+}
+
+.content{
+  padding-top: 100px;
+  padding-left:40px;
+  padding-right: 40px;
+}
+
+.welcome{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.welcomeMessage{
+   width: 40%;
+   display: flex;
+   align-items:center ;
+   color: #1784ddbc;
+   font-size: 40px;
+}
+.welcomeImage{
+  width: 50%;
+}

@@ -1,19 +1,34 @@
 var express = require('express');
 var router = express.Router();
 
-const retrieveDocument = async () => {
-  var mongoose = require('mongoose')
-  mongoose.connect('mongodb://127.0.0.1:27017/shop');
-  const ProductModel = require('../models/product')
-  return await ProductModel.findOne({id: '25720078'});
-}
-
 /* GET home page. */
-router.get('/', async function(req, res, next) {
-  const product = await retrieveDocument();
-  console.log(product)
-  console.log(product.image_groups[0].images[0].link)
-  res.render('index', { title: 'Express', product: product, productImg: 'images/' + product.image_groups[0].images[0].link});
+router.get('/', (req, res) => {
+  res.render('index', { layout: 'layout', categories: null});
+});
+
+router.get('/:categories', async function(req, res, next) {
+  
+  const retrieveDocument = async () => {
+    var mongoose = require('mongoose')
+    mongoose.connect('mongodb://127.0.0.1:27017/shop');
+    const CategoryModel = require('../models/category');
+    return await CategoryModel.findOne({id: req.params.categories});
+  }
+  const category = await retrieveDocument();
+  console.log(category);
+
+  switch(req.params.categories){
+    case 'mens':   
+        res.locals.isMensPage = true;
+        res.locals.isWomensPage = false;
+        break;
+    case 'womens':
+        res.locals.isMensPage = false;
+        res.locals.isWomensPage = true;
+        break;
+  }
+
+  res.render('index', { layout: 'layout', category: category , isMensPage: res.locals.isMensPage, isWomensPage: res.locals.isWomensPage});
 });
 
 module.exports = router;

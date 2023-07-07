@@ -1,6 +1,11 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<p>Product name is {{product.name}}</p>
-<p>Image link is {{productImg}}</p>
-<img src="{{productImg}}" alt="">
+
+{{#if category}}
+    <h1>{{category.page_title}}</h1>
+    <h2>{{category.page_description}}</p>
+{{else}}
+    <div class="welcome">
+        <p class="welcomeMessage">Welcome! Enjoy your shopping experience with us!</p>
+        <img src="images/welcome.png" class="welcomeImage" alt="">
+    </div>
+{{/if}}
 
