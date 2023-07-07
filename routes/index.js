@@ -15,7 +15,6 @@ router.get('/:categories', async function(req, res, next) {
     return await CategoryModel.findOne({id: req.params.categories});
   }
   const category = await retrieveDocument();
-  console.log(category);
 
   switch(req.params.categories){
     case 'mens':   
@@ -28,7 +27,7 @@ router.get('/:categories', async function(req, res, next) {
         break;
   }
 
-  res.render('index', { layout: 'layout', category: category , isMensPage: res.locals.isMensPage, isWomensPage: res.locals.isWomensPage});
+  res.render('index', { layout: 'layout', category: category, isMensPage: res.locals.isMensPage, isWomensPage: res.locals.isWomensPage});
 });
 
 module.exports = router;

@@ -49,7 +49,7 @@ body {
   justify-content: space-evenly;
 }
 
-.button1, .button2 {
+.button1, .button2, .viewProducts {
   gap: 10px;
   font-family: inherit;
   font-size: 13px;
@@ -70,20 +70,31 @@ body {
  }
 
  
- .button1:hover, .button2:hover {
+
+ .button1:hover, .button2:hover, .viewProducts:hover{
   color: #4b81c8;
   background-color: #E5EDF5;
   box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
  }
  
- .button1:focus, .button2:focus{
+ .button1:focus, .button2:focus, .viewProducts:focus{
   background-color: #1784ddbc;
   color: white;
  }
 
+ .categoriesContent{
+  display: flex;
+  align-content: center;
+  padding-top: 15px;
+ }
+
 .category{
-  padding:10px;
-  
+  padding: 25px;
+}
+
+.description{
+  width: 60%;
+  font-size: 15px;
 }
 
 .breadcrumbs{
@@ -117,8 +128,9 @@ h1{
 
 .content{
   padding-top: 100px;
-  padding-left:40px;
-  padding-right: 40px;
+  padding-left:100px;
+  padding-right: 100px;
+  
 }
 
 .welcome{
