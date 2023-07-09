@@ -1,0 +1,103 @@
+body{ 
+  font: 14px "Lucida Grande";
+}
+
+.products{
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product{
+    padding-bottom: 20px;
+}
+
+.contentProduct{
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightCard{
+    width: 50%;
+    justify-content: space-around;
+}
+.card {
+    width: 500px;
+    max-height: 300px;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: rgba(255, 255, 255, 0.7) 5px 5px 5px ,rgba(255, 255, 255, 0.7) -5px 0px 5px;
+    color: white;
+    justify-content: center;
+    background: linear-gradient(to right, rgb(253, 254, 255rgb(118, 182, 255)85));
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    box-shadow: rgb(73, 177, 225) 5px 10px 20px ,rgb(73, 177, 225) -5px 0px 40px;
+  }
+  
+  .titleProduct {
+    height: 1px;
+    font-size: 50px;
+    margin-top: 3px;
+    font-size: 25px;
+    margin-left: 15px;
+    color: black;
+    padding: 0;
+  }
+
+  .imageProduct{
+    width: 25%;
+    padding: left 15px;
+  }
+  
+  .descriptionProduct{
+    color: black;
+  }
+
+  .priceProduct{
+    color:black;
+  }
+
+  .info{
+    display: flex;
+    bottom: 10%;
+    justify-content: space-around;
+  }
+
+  .moreInfoProduct {
+    gap: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 50;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #7e97b8;
+    background-color: #e0e8ef;
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-color: rgba(255, 255, 255, 0.333);
+    border-radius: 40px 40px 40px 40px;
+    padding: 15px 10px 0px 10px;
+    transform: translate(0px, 0px) rotate(0deg);
+    transition: 0.2s;
+    text-decoration: none;
+    box-shadow: -2px -2px 2px 0px #ffffff, 2px 2px 3px 0px rgb(95 157 231 / 48%);
+   }
+  
+   .moreInfoProduct:hover{
+    color: #4b81c8;
+    background-color: #E5EDF5;
+    box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
+   }
+   
+   .moreInfoProduct:focus{
+    background-color: #1784ddbc;
+    color: white;
+   }
+  
+  
+  

@@ -178,7 +178,9 @@ h1{
    font-size: 40px;
 }
 .welcomeImage{
-  width: 37%;
+  width: 50%;
+  padding-bottom: 30px;;
+  padding-top: 50px;;
 }
 
 .nameCategory{
