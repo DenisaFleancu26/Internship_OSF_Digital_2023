@@ -5,16 +5,18 @@ body{
 .products{
     display: flex;
   flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .product{
     padding-bottom: 20px;
+    padding-right: 20px;
 }
 
 .contentProduct{
     display: flex;
     justify-content: space-around;
+    padding-bottom: 5px;
 }
 
 .rightCard{
@@ -22,8 +24,9 @@ body{
     justify-content: space-around;
 }
 .card {
-    width: 500px;
-    max-height: 300px;
+    width: 570px;
+    min-height: 230px;
+    max-height: 350px;
     background: rgb(255, 255, 255);
     border-radius: 15px;
     box-shadow: rgba(255, 255, 255, 0.7) 5px 5px 5px ,rgba(255, 255, 255, 0.7) -5px 0px 5px;
@@ -46,16 +49,21 @@ body{
     font-size: 25px;
     margin-left: 15px;
     color: black;
-    padding: 0;
+    padding: 0px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    padding-top: 5px;
   }
 
   .imageProduct{
     width: 25%;
     padding: left 15px;
+    padding-bottom: 10px;
   }
   
-  .descriptionProduct{
+  ul, .descriptionProduct{
     color: black;
+    font-size: 15px;
   }
 
   .priceProduct{
@@ -82,7 +90,6 @@ body{
     border-color: rgba(255, 255, 255, 0.333);
     border-radius: 40px 40px 40px 40px;
     padding: 15px 10px 0px 10px;
-    transform: translate(0px, 0px) rotate(0deg);
     transition: 0.2s;
     text-decoration: none;
     box-shadow: -2px -2px 2px 0px #ffffff, 2px 2px 3px 0px rgb(95 157 231 / 48%);
