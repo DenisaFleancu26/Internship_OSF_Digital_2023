@@ -7,17 +7,7 @@
         {{#if category.categories}}
             <ul>
                 {{#each category.categories}}
-                    {{#if image}}
-                        <div class="category">
-                            <h2>{{page_title}}</h2>
-                            <img src='images/{{image}}' class="" alt="">
-                            <p class="description">{{page_description}}</p>
-                            <a class="viewProducts" href="/{{parent_category_id}}/{{id}}" >View Products</a>
-                        </div>
-                    {{else}}
                             <h2 class="nameCategory">{{page_title}}</h2>
-                        
-                    {{/if}}
                         {{#each categories}}
                             {{#if image}}
                                 <div class="category">
