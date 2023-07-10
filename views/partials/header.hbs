@@ -12,14 +12,11 @@
 </nav>
   <ol class="breadcrumbs">
     <li><a class="breadcrumb" href="/">Home</a> </li>
-      {{#if isWomensPage}}
-      <li> <a class="breadcrumb" href="/womens">Women</a></li> 
+      {{#if isCategoryPage}}
+      <li> <a class="breadcrumb" href="/{{isCategoryPage}}">{{isCategoryPage}}</a></li> 
       {{/if}}
-      {{#if isWomensPages}}
-      <li> <a class="breadcrumb" href="/womenss">Womens</a></li> 
-      {{/if}}
-      {{#if isMensPage}}
-        <li> <a class="breadcrumb" href="/mens">Men</a> </li>
+      {{#if isSubcategoryPage}}
+      <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}">{{isSubcategoryPage}}</a></li> 
       {{/if}}
       {{#if isProductPage}}
         <li><a href="/{{product.name}}" class="breadcrumb">{{product.name}}</a></li> 
