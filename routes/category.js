@@ -15,7 +15,7 @@ router.get('/:category', async function(req, res, next) {
   
       res.locals.isCategoryPage = req.params.category;
   
-      res.render('contentMainPage', { layout: 'layout', category: category, isCategoryPage: res.locals.isCategoryPage});
+      res.render('contentMainPage', { layout: 'layout', title: category.name, category: category, isCategoryPage: res.locals.isCategoryPage});
     }
   });
 
