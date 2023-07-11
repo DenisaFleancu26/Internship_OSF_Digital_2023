@@ -1,0 +1,18 @@
+
+.message-error{
+    color: rgb(158, 0, 0);
+    font-size: 50px;
+    width: 550px;
+}
+
+.status{
+    color: rgb(158, 0, 0);
+    font-size: 100px;
+    width: 500px;
+}
+
+.error{
+    height: 450px;
+    align-content: center;
+    align-items: center;
+}

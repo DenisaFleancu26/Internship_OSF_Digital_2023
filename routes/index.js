@@ -9,35 +9,49 @@ router.get('/', (req, res) => {
 /* GET category page */
 router.get('/:category', async function(req, res, next) {
   
-  const retrieveDocument = async () => {
-    var mongoose = require('mongoose')
-    mongoose.connect('mongodb://127.0.0.1:27017/shop');
-    const CategoryModel = require('../models/category');
-    return await CategoryModel.findOne({id: req.params.category});
+  const CategoryModel = require('../models/category');
+  const category = await CategoryModel.findOne({id: req.params.category});
+
+  if(!category ){
+
+    next({ status: 404, message: 'Category not found!' });
+
+  }else{
+
+    res.locals.isCategoryPage = req.params.category;
+
+    res.render('contentMainPage', { layout: 'layout', category: category, isCategoryPage: res.locals.isCategoryPage});
   }
-  const category = await retrieveDocument();
-
-  res.locals.isCategoryPage = req.params.category;
-
-  res.render('contentMainPage', { layout: 'layout', category: category, isCategoryPage: res.locals.isCategoryPage});
 });
 
 /* GET subcategory page */
 router.get('/:category/:subcategory', async function(req, res, next){
 
-  const fetchProducts = async () => {
-    var mongoose = require('mongoose')
-    mongoose.connect('mongodb://127.0.0.1:27017/shop');
-    const ProductModel = require('../models/product');
-    return await ProductModel.find({primary_category_id: req.params.subcategory});
+  const ProductModel = require('../models/product');
+  const products = await ProductModel.find({primary_category_id: req.params.subcategory});
+  
+  if(!products || products.length === 0){
+
+    next({ status: 404, message: 'Subcategory not found!' });
+
+  }else{
+
+    res.locals.isSubcategoryPage = req.params.subcategory;
+    res.locals.isCategoryPage = req.params.category;
+
+    res.render('contentSubcategoryPage', { layout: 'layout', products: products, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage});
+
   }
-  const products = await fetchProducts();
+});
 
-  res.locals.isSubcategoryPage = req.params.subcategory;
-  res.locals.isCategoryPage = req.params.category;
-
-  res.render('contentSubcategoryPage', { layout: 'layout', products: products, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage});
-
+router.use(function(err, req, res, next) {
+  // Verifică dacă eroarea are codul de stare 404
+  if (err.status === 404) {
+    res.status(404).render('error', { layout: 'layout',  message: err.message, status: err.status });
+  } else {
+    // Altfel, afișează eroarea internă
+    res.status(500).render('error', { layout: 'layout', message: 'Internal Server Error', error: 500 });
+  }
 });
 
 module.exports = router;
