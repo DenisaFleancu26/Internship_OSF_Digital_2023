@@ -4,7 +4,6 @@ var router = express.Router();
 /* GET category page */
 router.get('/:category', async function(req, res, next) {
   
-    console.log(req.query);
     const CategoryModel = require('../models/category');
     const category = await CategoryModel.findOne({id: req.params.category});
   

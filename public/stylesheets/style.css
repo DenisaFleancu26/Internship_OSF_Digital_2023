@@ -129,6 +129,7 @@ body {
 
 .breadcrumb{
   color: #00B7FF;
+  text-transform: uppercase;
 }
 
 .breadcrumbs li::after{

@@ -11,12 +11,12 @@
           </div>
 </nav>
   <ol class="breadcrumbs">
-    <li><a class="breadcrumb" href="/">Home</a> </li>
+    <li><a class="breadcrumb" href="/">HOME</a> </li>
       {{#if isCategoryPage}}
       <li> <a class="breadcrumb" href="/{{isCategoryPage}}">{{isCategoryPage}}</a></li> 
       {{/if}}
       {{#if isSubcategoryPage}}
-      <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}">{{isSubcategoryPage}}</a></li> 
+      <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}">{{title}}</a></li> 
       {{/if}}
       {{#if isProductPage}}
         <li><a href="/{{product.name}}" class="breadcrumb">{{product.name}}</a></li> 
