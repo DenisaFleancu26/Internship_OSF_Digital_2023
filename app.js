@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
+var categoryRouter = require('./routes/category');
+var subcategoryRouter = require('./routes/subcategory');
 
 var app = express();
 var hbs = require('hbs');
@@ -19,7 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//    http://localhost:3000/
 app.use('/', indexRouter);
+//    http://localhost:3000/:category
+app.use('/', categoryRouter);
+//    http://localhost:3000/:category/:subcategory
+app.use('/', subcategoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
