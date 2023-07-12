@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var categoryRouter = require('./routes/category');
 var subcategoryRouter = require('./routes/subcategory');
+var productRouter = require('./routes/product')
 
 var app = express();
 var hbs = require('hbs');
@@ -28,6 +29,8 @@ app.use('/', indexRouter);
 app.use('/', categoryRouter);
 //    http://localhost:3000/:category/:subcategory
 app.use('/', subcategoryRouter);
+//    http://localhost:3000/:category/:subcategory/:product
+app.use('/', productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
