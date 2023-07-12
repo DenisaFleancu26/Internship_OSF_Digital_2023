@@ -9,7 +9,7 @@ router.get('/:category', async function(req, res, next) {
   
     if(!category ){
   
-      next({ status: 404, message: 'Category not found!' });
+      next({ status: 404, message: 'Oops, This Page Not Found!' });
   
     }else{
   

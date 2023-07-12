@@ -1,18 +1,23 @@
 
 .message-error{
-    color: rgb(158, 0, 0);
+    color: rgb(0, 0, 0);
     font-size: 50px;
-    width: 550px;
 }
 
 .status{
-    color: rgb(158, 0, 0);
-    font-size: 100px;
+    color: rgb(0, 0, 0);
+    font-size: 200px;
     width: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -15px;
+    margin-top:15px;
 }
 
 .error{
-    height: 450px;
-    align-content: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }

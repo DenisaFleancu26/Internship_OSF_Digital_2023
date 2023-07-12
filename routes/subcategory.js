@@ -11,7 +11,7 @@ router.get('/:category/:subcategory', async function(req, res, next){
     
     if(!products || products.length === 0){
   
-      next({ status: 404, message: 'Subcategory not found!' });
+      next({ status: 404, message: 'Oops, This Page Not Found!' });
   
     }else{
   
