@@ -4,10 +4,10 @@
     <div class="product-detail">
         <h2 class="product-name">{{product.name}}</h2>
         {{#if longDescription}}
-            <p class="description-product">{{product.short_description}}</p>
+            <p class="description-product">{{{product.short_description}}}</p>
             <p class="product-description">{{{product.long_description}}}</p>
         {{else}}
-            <p class="description-product">{{product.short_description}}</p>
+            <p class="description-product">{{{product.short_description}}}</p>
             <p class="product-description"></p>
         {{/if}}
         <div class="details">
