@@ -1,22 +1,21 @@
+
 <div class="product-page">
-    <img src='/images/products/large/90011212_001_0.jpg' class="image-product" alt="">
+    <img src='/images/{{product.image_groups.[0].images.[0].link}}' class="image-product" alt="">
     <div class="product-detail">
-        <h2 class="product-name">Casual Slim Leg Pants</h2>
-        <p class="description-product">This casual slim leg pant has a 15 inch leg opening and a laid back vibe. Made in our cotton stretch fabric with a micro houndstooth pattern.</p>
-        <p><li class="product-description">85% cotton, 11% poly amid, 4% elastane</li>
-            <li class="product-description">two-button</li>
-            <li class="product-description">half lined</li>
-            <li class="product-description">double vented with welt pockets</li>
-            <li class="product-description">inside vertical pocket</li>
-            <li class="product-description">functional button cuffs</li>
-            <li class="product-description">dry clean only</li>
-        </p>
+        <h2 class="product-name">{{product.name}}</h2>
+        {{#if longDescription}}
+            <p class="description-product">{{product.short_description}}</p>
+            <p class="product-description">{{{product.long_description}}}</p>
+        {{else}}
+            <p class="description-product">{{product.short_description}}</p>
+            <p class="product-description"></p>
+        {{/if}}
         <div class="details">
             <a class="buyProduct" href="" >Buy now</a>
             <div class="price-details">
-                <p class="price">Price: $ 100</p>
+                <p class="price">Price: $ {{product.price}}</p>
                 <select name="currencies" id="currencies">
-                    <option value="USD" selected>USD</option>
+                    <option value="{{product.currency}}" selected>{{product.currency}}</option>
                 </select>
             </div>
         </div>
