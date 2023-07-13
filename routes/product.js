@@ -22,7 +22,19 @@ router.get('/:category/:subcategory/:product', async function(req, res, next) {
       longDescription = true;
     }
 
-    res.render('contentProductDetailPage', { layout: 'layout' , product: product, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage, longDescription: longDescription});
+    const CategoryModel = require('../models/category');
+      const category = await CategoryModel.findOne({id: req.params.category});
+
+      category.categories.forEach(element => {
+        element.categories.forEach(el => {
+            if(el.id === req.params.subcategory){
+                title = el.page_title;
+            }
+        })
+      });
+
+
+    res.render('contentProductDetailPage', { layout: 'layout', title: product.name, product: product, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage, isProductPage: product.id, longDescription: longDescription, subcategoryName: title});
   }
 
 });

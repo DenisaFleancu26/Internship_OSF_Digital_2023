@@ -29,7 +29,7 @@ router.get('/:category/:subcategory', async function(req, res, next){
         })
       });
   
-      res.render('contentSubcategoryPage', { layout: 'layout', title: title, products: products, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage});
+      res.render('contentSubcategoryPage', { layout: 'layout', title: title, products: products, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage, subcategoryName: title});
   
     }
   });

@@ -16,9 +16,9 @@
       <li> <a class="breadcrumb" href="/{{isCategoryPage}}">{{isCategoryPage}}</a></li> 
       {{/if}}
       {{#if isSubcategoryPage}}
-      <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}">{{title}}</a></li> 
+      <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}">{{subcategoryName}}</a></li> 
       {{/if}}
       {{#if isProductPage}}
-        <li><a href="/{{product.name}}" class="breadcrumb">{{product.name}}</a></li> 
+        <li><a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}/{{isProductName}}" >{{product.name}}</a></li> 
       {{/if}}
   </ol>
