@@ -34,7 +34,16 @@ router.get('/:category/:subcategory/:product', async function(req, res, next) {
       });
 
 
-    res.render('contentProductDetailPage', { layout: 'layout', title: product.name, product: product, isCategoryPage: res.locals.isCategoryPage, isSubcategoryPage: res.locals.isSubcategoryPage, isProductPage: product.id, longDescription: longDescription, subcategoryName: title});
+    res.render('contentProductDetailPage', { 
+      layout: 'layout', 
+      title: product.name, 
+      product: product, 
+      isCategoryPage: res.locals.isCategoryPage, 
+      isSubcategoryPage: res.locals.isSubcategoryPage, 
+      isProductPage: product.id, 
+      longDescription: longDescription, 
+      subcategoryName: title
+    });
   }
 
 });

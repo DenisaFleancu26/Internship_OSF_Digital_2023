@@ -15,15 +15,28 @@ router.get('/:category', async function(req, res, next) {
   
       res.locals.isCategoryPage = req.params.category;
   
-      res.render('contentMainPage', { layout: 'layout', title: category.name, category: category, isCategoryPage: res.locals.isCategoryPage});
+      res.render('contentMainPage', { 
+        layout: 'layout', 
+        title: category.name, 
+        category: category, 
+        isCategoryPage: res.locals.isCategoryPage
+      });
     }
   });
 
   router.use(function(err, req, res, next) {
     if (err.status === 404) {
-      res.status(404).render('error', { layout: 'layout',  message: err.message, status: err.status });
+      res.status(404).render('error', { 
+        layout: 'layout',  
+        message: err.message, 
+        status: err.status 
+      });
     } else {
-      res.status(500).render('error', { layout: 'layout', message: 'Internal Server Error', error: 500 });
+      res.status(500).render('error', { 
+        layout: 'layout', 
+        message: 'Internal Server Error', 
+        error: 500 
+      });
     }
   });
 

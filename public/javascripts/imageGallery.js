@@ -1,3 +1,5 @@
+//  change the main image with a small one
+
 var mainImage = document.getElementById("mainImage");
 var smallImage = document.getElementsByClassName("small-img");
 
