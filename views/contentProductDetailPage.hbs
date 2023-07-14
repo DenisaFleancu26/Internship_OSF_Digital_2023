@@ -1,6 +1,15 @@
 
 <div class="product-page">
-    <img src='/images/{{product.image_groups.[0].images.[0].link}}' class="image-product" alt="">
+    <div class="images">
+        {{#if product.image_groups.[0].images.[1]}}
+        <div class="small-images">
+            {{#each product.image_groups.[0].images}}
+            <img src='/images/{{link}}' class="small-img" alt="">
+            {{/each}}
+        </div>
+        {{/if}}
+        <img id="mainImage" src='/images/{{product.image_groups.[0].images.[0].link}}' class="image-product" alt="">
+    </div>
     <div class="product-detail">
         <h2 class="product-name">{{product.name}}</h2>
         {{#if longDescription}}
@@ -21,3 +30,14 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    Handlebars.registerHelper('eq', function(a, b) {
+  if (a === b) {
+    return true;
+  } else {
+    return false;
+  }
+});
+</script>

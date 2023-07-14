@@ -56,7 +56,8 @@ body{
   }
 
   .imageProduct{
-    width: 25%;
+    min-width: 20%;
+    max-width: 25%;
     padding: left 15px;
     padding-bottom: 10px;
   }
