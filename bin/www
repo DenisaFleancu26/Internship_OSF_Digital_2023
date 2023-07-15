@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+require('dotenv').config();
 var mongoose = require('mongoose');
 /**
  * Module dependencies.
@@ -91,7 +91,7 @@ function onListening() {
 }
 
 // connect to MongoDB
-const url = 'mongodb+srv://denisafleancu2609:denisafleancu2609@cluster0.wv2ku4y.mongodb.net/shop?retryWrites=true&w=majority';
+const url = `mongodb+srv://${process.env.DATABASE_NAME}:${process.env.DATABASE_PASSWORD}@cluster0.wv2ku4y.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
 const connectionParams={
   useNewUrlParser: true
 }
