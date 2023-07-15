@@ -88,3 +88,18 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// connect to MongoDB
+const url = 'mongodb+srv://denisafleancu2609:denisafleancu2609@cluster0.wv2ku4y.mongodb.net/shop?retryWrites=true&w=majority';
+const connectionParams={
+  useNewUrlParser: true
+}
+
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to MongoDB ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
+

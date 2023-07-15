@@ -22,19 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// connect to MongoDB
-const url = 'mongodb+srv://denisafleancu2609:denisafleancu2609@cluster0.wv2ku4y.mongodb.net/shop?retryWrites=true&w=majority';
-const connectionParams={
-  useNewUrlParser: true
-}
-
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to MongoDB ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
 
 //    http://localhost:3000/
 app.use('/', indexRouter);
