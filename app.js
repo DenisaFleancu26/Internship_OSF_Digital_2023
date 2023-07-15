@@ -49,7 +49,7 @@ app.use(function(err, req, res, next) {
 });
 
 // connect to MongoDB
-mongoose.connect('mongodb+srv://denisafleancu2609:denisafleancu2609@cluster0.wv2ku4y.mongodb.net/?retryWrites=true&w=majority/shop');
+mongoose.connect('mongodb+srv://denisafleancu2609:denisafleancu2609@cluster0.wv2ku4y.mongodb.net/shop?retryWrites=true&w=majority');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
