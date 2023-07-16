@@ -9,6 +9,7 @@ var subcategoryRouter = require('./routes/subcategory');
 var productRouter = require('./routes/product');
 var GetValue = require('./soap/getvalue');
 var GetLatestValue = require('./soap/getlatestvalue');
+var GetValueAdv = require('./soap/getvalueadv');
 
 var app = express();
 var hbs = require('hbs');
@@ -43,6 +44,18 @@ app.get('/getlatestvalue/:currency', async (req, res) => {
     const value = await GetLatestValue.GetLatestValueCurrency(currency);
     res.send(`The value for ${currency} is: ${value}`);
 
+  } catch (error) {
+    res.status(500).send('An error occurred');
+  }
+});
+
+app.get('/getvalueadv', async (req, res) => {
+  try {
+    const date = '2023-07-16T12:34:56';
+    const currency = 'USD';
+
+    const { value, data, moneda } = await GetValueAdv.GetValueAdvCurrency(date, currency);
+    res.send(`The value for ${moneda} on ${data} is: ${value}`);
   } catch (error) {
     res.status(500).send('An error occurred');
   }
