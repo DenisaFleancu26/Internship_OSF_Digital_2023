@@ -8,6 +8,7 @@ var categoryRouter = require('./routes/category');
 var subcategoryRouter = require('./routes/subcategory');
 var productRouter = require('./routes/product');
 var GetValue = require('./soap/getvalue');
+var GetLatestValue = require('./soap/getlatestvalue');
 
 var app = express();
 var hbs = require('hbs');
@@ -29,6 +30,18 @@ app.get('/getvalue', async (req, res) => {
 
     const value = await GetValue.GetValueCurrency(date, currency);
     res.send(`The value for ${currency} on ${date} is: ${value}`);
+
+  } catch (error) {
+    res.status(500).send('An error occurred');
+  }
+});
+
+app.get('/getlatestvalue/:currency', async (req, res) => {
+  try {
+    const currency = req.params.currency; 
+
+    const value = await GetLatestValue.GetLatestValueCurrency(currency);
+    res.send(`The value for ${currency} is: ${value}`);
 
   } catch (error) {
     res.status(500).send('An error occurred');
