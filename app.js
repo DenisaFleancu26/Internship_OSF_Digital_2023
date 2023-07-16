@@ -6,7 +6,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var categoryRouter = require('./routes/category');
 var subcategoryRouter = require('./routes/subcategory');
-var productRouter = require('./routes/product')
+var productRouter = require('./routes/product');
+var GetValue = require('./soap/getvalue');
 
 var app = express();
 var hbs = require('hbs');
@@ -20,6 +21,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/getvalue', async (req, res) => {
+  try {
+    const date = '2023-07-16T12:34:56'; 
+    const currency = 'USD'; 
+
+    const value = await GetValue.GetValueCurrency(date, currency);
+    res.send(`The value for ${currency} on ${date} is: ${value}`);
+
+  } catch (error) {
+    res.status(500).send('An error occurred');
+  }
+});
 
 
 //    http://localhost:3000/
