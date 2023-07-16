@@ -10,6 +10,7 @@ var productRouter = require('./routes/product');
 var GetValue = require('./soap/getvalue');
 var GetLatestValue = require('./soap/getlatestvalue');
 var GetValueAdv = require('./soap/getvalueadv');
+var LastDateInserted = require('./soap/lastdateinserted');
 
 var app = express();
 var hbs = require('hbs');
@@ -56,6 +57,15 @@ app.get('/getvalueadv', async (req, res) => {
 
     const { value, data, moneda } = await GetValueAdv.GetValueAdvCurrency(date, currency);
     res.send(`The value for ${moneda} on ${data} is: ${value}`);
+  } catch (error) {
+    res.status(500).send('An error occurred');
+  }
+});
+
+app.get('/lastdateinserted', async (req, res) => {
+  try {
+    const date = await LastDateInserted.LastDateInsertedCurrency();
+    res.send(`Last date insered: ${date}`);
   } catch (error) {
     res.status(500).send('An error occurred');
   }
