@@ -1,4 +1,3 @@
-
 <div class="product-page">
     <div class="images">
         {{#if product.image_groups.[0].images.[1]}}
@@ -20,13 +19,61 @@
             <p class="product-description"></p>
         {{/if}}
         <div class="details">
-            <a class="buyProduct" href="" >Buy now</a>
+            <a class="buyProduct" href="">Buy now</a>
             <div class="price-details">
-                <p class="price">Price: $ {{product.price}}</p>
+                <p class="price" id="price">Price: $ <p class="price-product" id="price-product">{{product.price}}</p></p>
                 <select name="currencies" id="currencies">
-                    <option value="{{product.currency}}" selected>{{product.currency}}</option>
+                    <option value="{{product.currency}}">{{product.currency}}</option>
+                    <option value="EUR">EUR</option>
+                    <option value="RON">RON</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
                 </select>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    
+    const selectorCurrency = document.getElementById('currencies');
+    const price = parseFloat(document.querySelector('.price-product').textContent);
+    const productPrice = document.getElementById('price-product');
+    const currency = document.getElementById('price');
+    const previousCurrency = selectorCurrency.value;
+
+selectorCurrency.addEventListener('change', async (event) => {
+  try {
+    let response = await fetch(`/?currency=${previousCurrency}`);
+    let previousCurrencyValue = await response.json();
+    let initialPriceValue = price * parseFloat(previousCurrencyValue.value);
+
+    let newCurrency = selectorCurrency.value;
+    let newResponse = await fetch(`/?currency=${newCurrency}`);
+    let newCurrencyValue = await newResponse.json();
+    let newPriceValue = initialPriceValue / (newCurrencyValue.value);
+    productPrice.textContent = `${newPriceValue.toFixed(2)}`;
+    switch(newCurrency){
+        case 'USD': currency.textContent = 'Price: $';
+            break;
+        case 'EUR': currency.textContent = 'Price: €';
+            break;
+        case 'RON': currency.textContent = 'Price: lei';
+            break;
+        case 'GBP': currency.textContent = 'Price: £';
+            break;
+        case 'CHF': currency.textContent = 'Price: Fr';
+            break;
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+</script>
+
+
+
+
+
