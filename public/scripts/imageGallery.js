@@ -1,7 +1,7 @@
 //  change the main image with a small one
 
-var mainImage = document.getElementById("mainImage");
-var smallImage = document.getElementsByClassName("small-img");
+let mainImage = document.getElementById("mainImage");
+let smallImage = document.getElementsByClassName("small-img");
 
 
 smallImage[0].onclick = function(){

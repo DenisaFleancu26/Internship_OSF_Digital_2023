@@ -1,20 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var categoryRouter = require('./routes/category');
-var subcategoryRouter = require('./routes/subcategory');
-var productRouter = require('./routes/product');
-var GetValue = require('./routes/soap_methods/getvalue');
-var GetLatestValue = require('./routes/soap_methods/getlatestvalue');
-var GetValueAdv = require('./routes/soap_methods/getvalueadv');
-var LastDateInserted = require('./routes/soap_methods/lastdateinserted');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+let indexRouter = require('./routes/index');
+let categoryRouter = require('./routes/category');
+let subcategoryRouter = require('./routes/subcategory');
+let productRouter = require('./routes/product');
+let GetValue = require('./routes/soap_methods/getvalue');
+let GetLatestValue = require('./routes/soap_methods/getlatestvalue');
+let GetValueAdv = require('./routes/soap_methods/getvalueadv');
+let LastDateInserted = require('./routes/soap_methods/lastdateinserted');
 const { GetValueAdvCurrency } = require('./models/soap/getvalueadv');
 
-var app = express();
-var hbs = require('hbs');
+let app = express();
+let hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

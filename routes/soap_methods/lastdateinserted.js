@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var LastDateInserted = require('../../models/soap/lastdateinserted');
+let express = require('express');
+let router = express.Router();
+let LastDateInserted = require('../../models/soap/lastdateinserted');
 
 router.get('/', async function(req, res, next) {
   

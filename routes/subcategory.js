@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
-var title = '';
+let title = '';
 
 /* GET subcategory page */
 router.get('/:category/:subcategory', async function(req, res, next){
