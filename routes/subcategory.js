@@ -3,7 +3,6 @@ let router = express.Router();
 
 let title = '';
 
-/* GET subcategory page */
 router.get('/:category/:subcategory', async function(req, res, next){
 
     const ProductModel = require('../models/product');

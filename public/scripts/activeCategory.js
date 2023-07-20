@@ -1,5 +1,3 @@
-//  activate the category button
-
 const activeCategory = window.location.pathname;
 const navLink = document.querySelectorAll('.button');
 
