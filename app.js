@@ -7,10 +7,10 @@ var indexRouter = require('./routes/index');
 var categoryRouter = require('./routes/category');
 var subcategoryRouter = require('./routes/subcategory');
 var productRouter = require('./routes/product');
-var GetValue = require('./soap/getvalue');
-var GetLatestValue = require('./soap/getlatestvalue');
-var GetValueAdv = require('./soap/getvalueadv');
-var LastDateInserted = require('./soap/getvalueadv');
+var GetValue = require('./routes/soap_methods/getvalue');
+var GetLatestValue = require('./routes/soap_methods/getlatestvalue');
+var GetValueAdv = require('./routes/soap_methods/getvalueadv');
+var LastDateInserted = require('./routes/soap_methods/lastdateinserted');
 const { GetValueAdvCurrency } = require('./soap/getvalueadv');
 
 var app = express();
@@ -26,51 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/getvalue', async (req, res) => {
-  try {
-    const date = '2023-07-16T12:34:56'; 
-    const currency = 'USD'; 
-
-    const value = await GetValue.GetValueCurrency(date, currency);
-    res.send(`The value for ${currency} on ${date} is: ${value}`);
-
-  } catch (error) {
-    res.status(500).send('An error occurred');
-  }
-});
-
-app.get('/getlatestvalue/:currency', async (req, res) => {
-  try {
-    const currency = req.params.currency; 
-
-    const value = await GetLatestValue.GetLatestValueCurrency(currency);
-    res.send(`The value for ${currency} is: ${value}`);
-
-  } catch (error) {
-    res.status(500).send('An error occurred');
-  }
-});
-
-app.get('/getvalueadv', async (req, res) => {
-  try {
-    const date = '2023-07-16T12:34:56';
-    const currency = 'USD';
-
-    const { value, data, moneda } = await GetValueAdv.GetValueAdvCurrency(date, currency);
-    res.send(`The value for ${moneda} on ${data} is: ${value}`);
-  } catch (error) {
-    res.status(500).send('An error occurred');
-  }
-});
-
-app.get('/lastdateinserted', async (req, res) => {
-  try {
-    const date = await LastDateInserted.LastDateInsertedCurrency();
-    res.send(`Last date insered: ${date}`);
-  } catch (error) {
-    res.status(500).send('An error occurred');
-  }
-});
+app.use('/getvalue', GetValue);
+app.use('/getlatestvalue', GetLatestValue);
+app.use('/getvalueadv', GetValueAdv);
+app.use('/lastdateinserted', LastDateInserted);
 
 app.get('/', async (req, res, next) => {
   if(req.query.currency){
