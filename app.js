@@ -11,7 +11,7 @@ var GetValue = require('./routes/soap_methods/getvalue');
 var GetLatestValue = require('./routes/soap_methods/getlatestvalue');
 var GetValueAdv = require('./routes/soap_methods/getvalueadv');
 var LastDateInserted = require('./routes/soap_methods/lastdateinserted');
-const { GetValueAdvCurrency } = require('./soap/getvalueadv');
+const { GetValueAdvCurrency } = require('./models/soap/getvalueadv');
 
 var app = express();
 var hbs = require('hbs');
