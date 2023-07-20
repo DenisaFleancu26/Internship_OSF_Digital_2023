@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-require('dotenv').config();
-var mongoose = require('mongoose');
+
 /**
  * Module dependencies.
  */
@@ -8,6 +7,9 @@ var mongoose = require('mongoose');
 var app = require('../app');
 var debug = require('debug')('project:server');
 var http = require('http');
+var connectToDatabase = require('../models/mongo/db');
+
+connectToDatabase();
 
 /**
  * Get port from environment and store in Express.
@@ -90,17 +92,5 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-// connect to MongoDB
-const url = `mongodb+srv://${process.env.DATABASE_NAME}:${process.env.DATABASE_PASSWORD}@cluster0.wv2ku4y.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
-const connectionParams={
-  useNewUrlParser: true
-}
 
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to MongoDB ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
 
