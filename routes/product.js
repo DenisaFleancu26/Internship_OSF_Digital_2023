@@ -1,37 +1,17 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { findProduct, longDescriptionProduct } = require('../models/mongo/findProduct');
+const { findCategoryName } = require('../models/mongo/findCategory');
 
 router.get('/:category/:subcategory/:product', async function(req, res, next) {
   
-  const ProductModel = require('../models/product');
-  const product = await ProductModel.findOne({id: req.params.product});
+  try{
 
-  if(!product){
-
-    next({ status: 404, message: 'Oops, This Page Not Found!'});
-
-  }else{
-
+    const product = await findProduct(req.params.product);
     res.locals.isSubcategoryPage = req.params.subcategory;
     res.locals.isCategoryPage = req.params.category;
 
-    if(product.short_description === product.long_description){
-      longDescription = false;
-    }else{
-      longDescription = true;
-    }
-
-    const CategoryModel = require('../models/category');
-      const category = await CategoryModel.findOne({id: req.params.category});
-
-      category.categories.forEach(element => {
-        element.categories.forEach(el => {
-            if(el.id === req.params.subcategory){
-                title = el.page_title;
-            }
-        })
-      });
-
+    title = await findCategoryName(req.params.category);
 
     res.render('contentProductDetailPage', { 
       layout: 'layout', 
@@ -40,10 +20,24 @@ router.get('/:category/:subcategory/:product', async function(req, res, next) {
       isCategoryPage: res.locals.isCategoryPage, 
       isSubcategoryPage: res.locals.isSubcategoryPage, 
       isProductPage: product.id, 
-      longDescription: longDescription, 
+      longDescription: await longDescriptionProduct(product), 
       subcategoryName: title
     });
+
+  }catch(error){
+    res.render('error', {
+      layout: 'layout',
+      title: 'Error',
+      status: error.status, 
+      message: error.message
+    });
   }
+
+
+    
+
+   
+  
 
 });
 

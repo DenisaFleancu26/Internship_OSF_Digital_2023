@@ -1,33 +1,18 @@
-let express = require('express');
-let router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+const { findCategoryName } = require('../models/mongo/findCategory');
+const { findSubcategoryProducts } = require('../models/mongo/findSubcategoryProducts');
 let title = '';
 
 router.get('/:category/:subcategory', async function(req, res, next){
 
-    const ProductModel = require('../models/product');
-    const products = await ProductModel.find({primary_category_id: req.params.subcategory});
-    
-    if(!products || products.length === 0){
-  
-      next({ status: 404, message: 'Oops, This Page Not Found!' });
-  
-    }else{
-  
+    try{
+      const products = await findSubcategoryProducts(req.params.subcategory);
+      title = await findCategoryName(req.params.category, req.params.subcategory);
+
       res.locals.isSubcategoryPage = req.params.subcategory;
       res.locals.isCategoryPage = req.params.category;
 
-      const CategoryModel = require('../models/category');
-      const category = await CategoryModel.findOne({id: req.params.category});
-
-      category.categories.forEach(element => {
-        element.categories.forEach(el => {
-            if(el.id === req.params.subcategory){
-                title = el.page_title;
-            }
-        })
-      });
-  
       res.render('contentSubcategoryPage', { 
         layout: 'layout', 
         title: title, 
@@ -36,26 +21,17 @@ router.get('/:category/:subcategory', async function(req, res, next){
         isSubcategoryPage: res.locals.isSubcategoryPage, 
         subcategoryName: title
       });
-  
+
+    }catch(error){
+        res.render('error', {
+          layout: 'layout',
+          title: 'Error',
+          status: error.status, 
+          message: error.message
+        });
     }
+  
   });
   
-
-  router.use(function(err, req, res, next) {
-    if (err.status === 404) {
-      res.status(404).render('error', { 
-        layout: 'layout',  
-        message: err.message, 
-        status: err.status 
-      });
-    } else {
-      res.status(500).render('error', { 
-        layout: 'layout', 
-        message: 'Internal Server Error', 
-        error: 500 
-      });
-    }
-  });
-
 
   module.exports = router;
