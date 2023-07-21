@@ -11,7 +11,7 @@ let GetValue = require('./routes/soap_methods/getvalue');
 let GetLatestValue = require('./routes/soap_methods/getlatestvalue');
 let GetValueAdv = require('./routes/soap_methods/getvalueadv');
 let LastDateInserted = require('./routes/soap_methods/lastdateinserted');
-const { GetValueAdvCurrency } = require('./models/soap/getvalueadv');
+let getCurrency = require('./routes/currency');
 
 let app = express();
 let hbs = require('hbs');
@@ -31,22 +31,7 @@ app.use('/getlatestvalue', GetLatestValue);
 app.use('/getvalueadv', GetValueAdv);
 app.use('/lastdateinserted', LastDateInserted);
 
-app.get('/', async (req, res, next) => {
-  if(req.query.currency){
-    try {
-      const currency = req.query.currency;
-      const date = new Date();
-      const price = await GetValueAdvCurrency(date.toISOString(), currency);
-
-      res.json({"value": price.value})
-    } catch(error){
-      console.error(error);
-      res.status(500).json({ error: "An error occurred"});
-    }
-  }else{
-    next();
-  }
-});
+app.use('/', getCurrency);
 
 app.use('/', indexRouter);
 app.use('/', categoryRouter);
