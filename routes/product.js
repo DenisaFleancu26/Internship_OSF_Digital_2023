@@ -8,10 +8,10 @@ router.get('/:category/:subcategory/:product', async function(req, res, next) {
   try{
 
     const product = await findProduct(req.params.product);
+    title = await findCategoryName(req.params.category);
+    
     res.locals.isSubcategoryPage = req.params.subcategory;
     res.locals.isCategoryPage = req.params.category;
-
-    title = await findCategoryName(req.params.category);
 
     res.render('contentProductDetailPage', { 
       layout: 'layout', 
