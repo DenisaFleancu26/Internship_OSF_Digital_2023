@@ -1,5 +1,5 @@
 const ProductModel = require('../product');
-var title = '';
+let title = '';
 
 async function findProduct(id){
     

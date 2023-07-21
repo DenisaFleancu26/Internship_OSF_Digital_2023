@@ -1,6 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let GetLatestValue = require('../../models/soap/getlatestvalue');
+const express = require('express');
+const router = express.Router();
+const GetLatestValue = require('../../models/soap/getlatestvalue');
 
 router.get('/:currency', async function(req, res, next) {
   

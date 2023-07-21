@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 const url = `mongodb+srv://${process.env.DATABASE_NAME}:${process.env.DATABASE_PASSWORD}@cluster0.wv2ku4y.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;

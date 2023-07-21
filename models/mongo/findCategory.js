@@ -1,5 +1,5 @@
 const CategoryModel = require('../category');
-var title = '';
+let title = '';
 
 async function findCategory(id){
     

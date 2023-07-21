@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-let app = require('../app');
-let debug = require('debug')('project:server');
-let http = require('http');
-let connectToDatabase = require('../models/mongo/db');
+const app = require('../app');
+const debug = require('debug')('project:server');
+const http = require('http');
+const connectToDatabase = require('../models/mongo/db');
 
 connectToDatabase();
 
-let port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-let server = http.createServer(app);
+const server = http.createServer(app);
 
 server.listen(port);
 server.on('error', onError);
@@ -18,7 +18,7 @@ server.on('listening', onListening);
 
 
 function normalizePort(val) {
-  let port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     return val;
@@ -36,7 +36,7 @@ function onError(error) {
     throw error;
   }
 
-  let bind = typeof port === 'string'
+  const bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -55,8 +55,8 @@ function onError(error) {
 }
 
 function onListening() {
-  let addr = server.address();
-  let bind = typeof addr === 'string'
+  const addr = server.address();
+  const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
