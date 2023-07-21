@@ -6,14 +6,12 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-
 .nav{
   position: fixed;
   width: 100%;
   background-color: white;
   top: 0%;
   border-radius: 0px 0px 0px 40px;
-  
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -30,19 +28,16 @@ body {
   padding: 5px;
   border-radius: 100px 100px 100px 100px;
 }
-
 .brand{
   display: flex;
   align-items: center;
 }
-
 .title{
   padding-left: 10px;
   font-size: 40px;
   color: #1784ddbc;
   font-family:  "Lucida Grande";
 }
-
 .categories {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -51,13 +46,11 @@ body {
   display:table-row;
   text-decoration: white;
 }
-
 .categ{
   width: 400px;
   display: flex;
   justify-content: space-evenly;
 }
-
 .button {
   gap: 10px;
   font-family: inherit;
@@ -77,7 +70,6 @@ body {
   text-decoration: none;
   box-shadow: -4px -2px 10px 0px #ffffff, 4px 2px 10px 0px rgb(95 157 231 / 48%);
  }
-
  .viewProducts {
   gap: 10px;
   font-family: inherit;
@@ -97,58 +89,46 @@ body {
   text-decoration: none;
   box-shadow: -4px -2px 5px 0px #ffffff, 2px 2px 3px 0px rgb(95 157 231 / 48%);
  }
-
  .active{
   color: #E5EDF5;
   background-color: #1784ddbc;
   box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
  }
-
  .categoriesContent{
   display: flex;
   align-content: center;
   padding-top: 15px;
  }
-
 .category{
   padding: 25px;
 }
-
 .description{
   width: 60%;
   font-size: 15px;
 }
-
 .breadcrumbs{
   list-style: none;
 }
-
 .breadcrumbs li{
   display: inline-block;
 }
-
 .breadcrumb{
   color: #00B7FF;
   text-transform: uppercase;
 }
-
 .breadcrumbs li::after{
   content: "  /  ";
   color:#00B7FF;
 }
-
 .breadcrumbs li:last-child::after{
   content: "";
 }
-
 .breadcrumb:hover{
   color: #08678d;
 }
-
 h1{
   color: #1784ddbc;
 }
-
 .content{
   padding-top: 100px;
   padding-left:100px;
@@ -162,7 +142,6 @@ h1{
   justify-content: center;
   display: flex;
 }
-
 .welcomeMessage{
    width: 40%;
    display: flex;
@@ -175,11 +154,9 @@ h1{
   padding-bottom: 30px;;
   padding-top: 50px;;
 }
-
 .nameCategory{
   padding-left: 20px;
 }
-
 .footer{
   background-color:#32aaff71;
   text-align: center;

@@ -1,24 +1,20 @@
 body{ 
   font: 14px "Lucida Grande";
 }
-
 .products{
     display: flex;
   flex-wrap: wrap;
     justify-content: space-between;
 }
-
 .product{
     padding-bottom: 20px;
     padding-right: 20px;
 }
-
 .contentProduct{
     display: flex;
     justify-content: space-around;
     padding-bottom: 5px;
 }
-
 .rightCard{
     width: 50%;
     justify-content: space-around;
@@ -37,11 +33,9 @@ body{
     transition: all 0.3s ease-in-out;
     overflow: hidden;
   }
-  
   .card:hover {
     box-shadow: rgb(73, 177, 225) 5px 10px 20px ,rgb(73, 177, 225) -5px 0px 40px;
   }
-  
   .titleProduct {
     height: 1px;
     font-size: 50px;
@@ -54,32 +48,27 @@ body{
     padding-bottom: 20px;
     padding-top: 5px;
   }
-
   .imageProduct{
     min-width: 20%;
     max-width: 25%;
     padding: left 15px;
     padding-bottom: 10px;
   }
-  
   ul, .descriptionProduct{
     color: black;
     font-size: 15px;
   }
-
   .priceProduct{
     color:black;
     font-size: 20px;
     padding-right: 60px;
   }
-
   .info{
     display: flex;
     bottom: 10%;
     align-items: center;
     align-content: center;
   }
-
   .moreInfoProduct, .buyProduct {
     gap: 10px;
     font-family: inherit;
@@ -98,13 +87,11 @@ body{
     text-decoration: none;
     box-shadow: -2px -2px 2px 0px #ffffff, 2px 2px 3px 0px rgb(95 157 231 / 48%);
    }
-  
    .moreInfoProduct:hover, .buyProduct:hover{
     color: #4b81c8;
     background-color: #E5EDF5;
     box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
    }
-   
    .moreInfoProduct:focus, .buyProduct:focus{
     background-color: #1784ddbc;
     color: white;

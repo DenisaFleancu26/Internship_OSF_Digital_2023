@@ -32,13 +32,6 @@ router.get('/:category/:subcategory/:product', async function(req, res, next) {
       message: error.message
     });
   }
-
-
-    
-
-   
-  
-
 });
 
 module.exports = router;
