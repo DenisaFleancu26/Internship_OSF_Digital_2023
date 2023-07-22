@@ -7,11 +7,14 @@ let title = '';
 router.get('/:category/:subcategory', async function(req, res, next){
 
     try{
-      const products = await findSubcategoryProducts(req.params.subcategory);
+      const { length, products} = await findSubcategoryProducts(req.params.subcategory, req.query.page || 1);
       title = await findCategoryName(req.params.category, req.params.subcategory);
 
       res.locals.isSubcategoryPage = req.params.subcategory;
       res.locals.isCategoryPage = req.params.category;
+      const page = req.query.page || 1;
+
+      const pageNumbers = Array.from({ length: Math.ceil(length / 6) }, (_, index) => index + 1);
 
       res.render('contentSubcategoryPage', { 
         layout: 'layout', 
@@ -19,7 +22,9 @@ router.get('/:category/:subcategory', async function(req, res, next){
         products: products, 
         isCategoryPage: res.locals.isCategoryPage, 
         isSubcategoryPage: res.locals.isSubcategoryPage, 
-        subcategoryName: title
+        subcategoryName: title,
+        current: Number(page),
+        pages: pageNumbers
       });
 
     }catch(error){
