@@ -17,3 +17,18 @@
         </div>
     {{/each}}
 </div>
+
+<div class="pagination">
+    {{#if (greater pages.length 1)}}
+        <ul class="pagination">
+                {{#each pages}}
+                    {{#if (equal ../current this)}}
+                            <a class="current-page">{{this}}</a>
+                        {{else}} 
+                            <a class="page" href="/{{../isCategoryPage}}/{{../isSubcategoryPage}}/?page={{this}}">{{this}}</a>
+                    {{/if}}
+                {{/each}}
+          
+        </ul>
+    {{/if}}
+</div>

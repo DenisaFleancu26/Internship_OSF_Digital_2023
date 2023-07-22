@@ -21,7 +21,7 @@ body{
 }
 .card {
     width: 570px;
-    min-height: 230px;
+    min-height: 250px;
     max-height: 350px;
     background: rgb(255, 255, 255);
     border-radius: 15px;
@@ -69,7 +69,7 @@ body{
     align-items: center;
     align-content: center;
   }
-  .moreInfoProduct, .buyProduct {
+  .moreInfoProduct, .buyProduct, .page{
     gap: 10px;
     font-family: inherit;
     font-size: 13px;
@@ -87,12 +87,12 @@ body{
     text-decoration: none;
     box-shadow: -2px -2px 2px 0px #ffffff, 2px 2px 3px 0px rgb(95 157 231 / 48%);
    }
-   .moreInfoProduct:hover, .buyProduct:hover{
+   .moreInfoProduct:hover, .buyProduct:hover, .page:hover{
     color: #4b81c8;
     background-color: #E5EDF5;
     box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
    }
-   .moreInfoProduct:focus, .buyProduct:focus{
+   .moreInfoProduct:focus, .buyProduct:focus, .page:focus{
     background-color: #1784ddbc;
     color: white;
    }
