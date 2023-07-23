@@ -1,6 +1,7 @@
 .pagination{
     display:flex;
     justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .page{
@@ -18,7 +19,7 @@
     float: left;
     padding: 5px 10px;
     text-decoration: none;
-    border-radius: 100%;
+    border-radius: 45%;
     background-color: #1784ddbc;
     box-shadow: -2px -1px 8px 0px #1784ddbc, 2px 1px 8px 0px rgb(95 157 231 / 48%);
     cursor:default;
