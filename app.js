@@ -14,6 +14,11 @@ const LastDateInserted = require('./routes/soap_methods/lastdateinserted');
 const getCurrency = require('./routes/currency');
 require('./models/handlebars/equal');
 require('./models/handlebars/greater');
+require('./models/handlebars/and');
+require('./models/handlebars/less');
+require('./models/handlebars/notequal');
+require('./models/handlebars/substract');
+require('./models/handlebars/add');
 
 const app = express();
 const hbs = require('hbs');
