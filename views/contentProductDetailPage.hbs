@@ -39,35 +39,53 @@
     const price = parseFloat(document.querySelector('.price-product').textContent);
     const productPrice = document.getElementById('price-product');
     const currency = document.getElementById('price');
-    const previousCurrency = selectorCurrency.value;
+    let previousCurrency = 'USD';
 
-selectorCurrency.addEventListener('change', async (event) => {
-  try {
-    let response = await fetch(`/?currency=${previousCurrency}`);
-    let previousCurrencyValue = await response.json();
-    let initialPriceValue = price * parseFloat(previousCurrencyValue.value);
-
-    let newCurrency = selectorCurrency.value;
-    let newResponse = await fetch(`/?currency=${newCurrency}`);
-    let newCurrencyValue = await newResponse.json();
-    let newPriceValue = initialPriceValue / (newCurrencyValue.value);
-    productPrice.textContent = `${newPriceValue.toFixed(2)}`;
-    switch(newCurrency){
-        case 'USD': currency.textContent = 'Price: $';
-            break;
-        case 'EUR': currency.textContent = 'Price: €';
-            break;
-        case 'RON': currency.textContent = 'Price: lei';
-            break;
-        case 'GBP': currency.textContent = 'Price: £';
-            break;
-        case 'CHF': currency.textContent = 'Price: Fr';
-            break;
+    let localCurrency = localStorage.getItem('currencySelected');
+    if(localCurrency){
+        selectorCurrency.value = localCurrency;
+        updatePrice();
+    }else{
+        selectorCurrency.value = 'USD';
     }
 
-  } catch (error) {
-    console.error(error);
-  }
+    async function updatePrice(){
+
+        try {   
+            let response = await fetch(`/?currency=${previousCurrency}`);
+            let previousCurrencyValue = await response.json();
+            let initialPriceValue = price * parseFloat(previousCurrencyValue.value);
+
+            let newCurrency = selectorCurrency.value;
+            let newResponse = await fetch(`/?currency=${newCurrency}`);
+            let newCurrencyValue = await newResponse.json();
+            let newPriceValue = initialPriceValue / (newCurrencyValue.value);
+            productPrice.textContent = `${newPriceValue.toFixed(2)}`;
+            switch(newCurrency){
+                case 'USD': currency.textContent = 'Price: $';
+                    break;
+                case 'EUR': currency.textContent = 'Price: €';
+                    break;
+                case 'RON': currency.textContent = 'Price: lei';
+                    break;
+                case 'GBP': currency.textContent = 'Price: £';
+                    break;
+                case 'CHF': currency.textContent = 'Price: Fr';
+                    break;
+            }
+            localStorage.setItem('currencySelected', newCurrency);
+            
+            } catch (error) {
+            console.error(error);
+        }
+    }
+  
+selectorCurrency.addEventListener('change', async (event) => {
+  try {
+        updatePrice();
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 </script>
