@@ -12,6 +12,7 @@ const GetLatestValue = require('./routes/soap_methods/getlatestvalue');
 const GetValueAdv = require('./routes/soap_methods/getvalueadv');
 const LastDateInserted = require('./routes/soap_methods/lastdateinserted');
 const getCurrency = require('./routes/currency');
+const registerRoute = require('./routes/registration');
 require('./models/handlebars/equal');
 require('./models/handlebars/greater');
 require('./models/handlebars/and');
@@ -39,7 +40,7 @@ app.use('/getvalueadv', GetValueAdv);
 app.use('/lastdateinserted', LastDateInserted);
 
 app.use('/', getCurrency);
-
+app.use('/', registerRoute);
 app.use('/', indexRouter);
 app.use('/', categoryRouter);
 app.use('/', subcategoryRouter);
