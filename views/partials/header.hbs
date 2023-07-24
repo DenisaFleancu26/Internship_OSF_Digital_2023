@@ -21,6 +21,9 @@
 </nav>
   <ol class="breadcrumbs">
     <li><a class="breadcrumb" href="/">HOME</a> </li>
+    {{#if isRegistrationPage}}
+      <li> <a class="breadcrumb" href="/registration">Registration</a></li>
+    {{else}}
       {{#if isCategoryPage}}
       <li> <a class="breadcrumb" href="/{{isCategoryPage}}">{{isCategoryPage}}</a></li> 
       {{/if}}
@@ -30,4 +33,5 @@
       {{#if isProductPage}}
       <li> <a class="breadcrumb" href="/{{isCategoryPage}}/{{isSubcategoryPage}}/{{isProductPage}}" >{{product.name}}</a></li> 
       {{/if}}
+    {{/if}}
   </ol>
