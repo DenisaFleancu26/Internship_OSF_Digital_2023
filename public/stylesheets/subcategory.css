@@ -4,7 +4,7 @@ body{
 .products{
     display: flex;
   flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .product{
     padding-bottom: 20px;

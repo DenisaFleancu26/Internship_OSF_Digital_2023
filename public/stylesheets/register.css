@@ -1,0 +1,33 @@
+.registration{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 35%;
+    padding-top: 30px;
+}
+.email-reg, .password-reg, .confirm-password-reg {
+    width: 150%;
+}
+.emailText,.passwordText,.confirm-passwordText {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 50;
+  letter-spacing: 0.4px;
+}
+.registration-btn{
+    margin-top: 30px;
+    padding: 10px 15px 10px 15px;
+    box-shadow: -4px -2px 5px 0px #048fe063, 2px 2px 3px 0px rgb(95 157 231 / 48%);
+    background-color: #048fe09f;
+    border-color: #048fe000;
+    color:white;
+}
+.error-message{
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: 50;
+    letter-spacing: 0.4px;
+    color: rgb(153, 0, 0);
+}
+
