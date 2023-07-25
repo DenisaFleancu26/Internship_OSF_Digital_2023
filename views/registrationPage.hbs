@@ -10,3 +10,32 @@
     </form>
 </div>
 
+<script>
+    const form = document.getElementById('form-reg');
+    form.addEventListener('submit', registerUser);
+
+    async function registerUser(event){
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirm_password = document.getElementById('confirm-password').value;
+
+        const result = await fetch('/registration', {
+            method: 'POST',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+                confirm_password
+            })
+        }).then((res) => res.json())
+
+        if(result.status !== 'ok'){
+            alert(result.error);
+        }else{
+            window.location.href = '/';
+        }
+    }
+</script>
