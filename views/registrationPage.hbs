@@ -35,6 +35,9 @@
         if(result.status !== 'ok'){
             alert(result.error);
         }else{
+            document.cookie = `user=${JSON.stringify(result.user)}`;
+            document.cookie = `token=${result.token}`;
+
             window.location.href = '/';
         }
     }
