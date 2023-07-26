@@ -198,10 +198,12 @@ h1{
   color: white;
   padding: 10px 15px 10px 15px;
   margin-right: 10px;
+  cursor: pointer;
  }
 .registration-button{
   background-color: #048fe09f;
   color: white;
   padding: 10px 15px 10px 15px;
   margin-right: 30px;
+  cursor: pointer;
 }

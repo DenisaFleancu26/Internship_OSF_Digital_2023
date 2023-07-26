@@ -22,6 +22,7 @@
     background-color: #048fe09f;
     border-color: #048fe000;
     color:white;
+    cursor: pointer;
 }
 .error-message{
     font-family: inherit;
