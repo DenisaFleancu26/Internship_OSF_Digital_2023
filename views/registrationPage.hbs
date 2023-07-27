@@ -1,11 +1,20 @@
 <div class="registration">
     <form id="form-reg">
-        <p class="emailText">Email</p>
-        <input type="text" autocomplete="off" id="email" class="email-reg" placeholder="Email">
-        <p class="passwordText">Password</p>
-        <input type="password" autocomplete="off" id="password" class="password-reg" placeholder="Password">
-        <p class="confirm-passwordText">Confirm Password</p>
-        <input type="password" autocomplete="off" id="confirm-password" class="confirm-password-reg" placeholder="Confirm Password">
+        <div class="form">
+            <p class="emailText">Email</p>
+            <input type="text" autocomplete="off" id="email" class="email-reg" placeholder="Email">
+            <span class='error-message' id="error-email"></span>
+        </div>
+        <div class="form">
+            <p class="passwordText">Password</p>
+            <input type="password" autocomplete="off" id="password" class="password-reg" placeholder="Password">
+            <span class='error-message' id="error-password"></span>
+        </div>
+        <div class="form">
+            <p class="confirm-passwordText">Confirm Password</p>
+            <input type="password" autocomplete="off" id="confirm-password" class="confirm-password-reg" placeholder="Confirm Password">
+            <span class='error-message' id="error-confirm-password"></span> 
+        </div>         
         <input class="registration-btn" type="submit" value="Register">
     </form>
 </div>
@@ -13,6 +22,9 @@
 <script>
     const form = document.getElementById('form-reg');
     form.addEventListener('submit', registerUser);
+    const error_email = document.getElementById('error-email');
+    const error_password = document.getElementById('error-password');
+    const error_confirm_password = document.getElementById('error-confirm-password');
 
     async function registerUser(event){
         event.preventDefault();
@@ -33,7 +45,20 @@
         }).then((res) => res.json())
 
         if(result.status !== 'ok'){
-            alert(result.error);
+            switch(result.status){
+                case 'error-email': error_email.textContent = result.error;
+                                    error_password.textContent = null;
+                                    error_confirm_password.textContent = null;
+                    break;
+                case 'error-password':  error_email.textContent = null;
+                                        error_password.textContent = result.error;
+                                        error_confirm_password.textContent = null;
+                    break;
+                case 'error-confirm-password':  error_email.textContent = null;
+                                                error_password.textContent = null;
+                                                error_confirm_password.textContent = result.error;
+                    break;
+            }
         }else{
             document.cookie = `user=${JSON.stringify(result.user)}`;
             document.cookie = `token=${result.token}`;

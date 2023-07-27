@@ -7,7 +7,7 @@
     padding-top: 30px;
 }
 .email-reg, .password-reg, .confirm-password-reg {
-    width: 150%;
+    width: 450px;
 }
 .emailText,.passwordText,.confirm-passwordText {
   font-family: inherit;
@@ -26,9 +26,13 @@
 }
 .error-message{
     font-family: inherit;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 50;
-    letter-spacing: 0.4px;
+    margin-top: 15px;
     color: rgb(153, 0, 0);
 }
-
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
