@@ -13,7 +13,7 @@ async function signIn(res, email, password){
         const user = await User.findOne({ email }).lean();
     
         if(!user){
-          return res.json({status: 'error', error: 'Invalid Email or Password!'});
+          return res.json({status: 'error-email', error: 'Invalid Email!'});
         }
     
         if(await bcrypt.compare(password, user.password)){
@@ -30,7 +30,7 @@ async function signIn(res, email, password){
           );
           return res.json({ status: 'ok', user: user, token: token});
         }else{
-          return res.json({status: 'error', error: 'Invalid Email or Password!'});
+          return res.json({status: 'error-password', error: 'Invalid Password!'});
         }
       }catch(error){
         return res.json({ status: 'error', error: error.message});

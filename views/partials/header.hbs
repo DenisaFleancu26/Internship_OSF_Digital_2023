@@ -12,7 +12,9 @@
     <div class="sign-in">
       <form id="login">
           <input type="text" autocomplete="off" id="email-login" class="email" placeholder="Email">
+          <span class='error-message' id="error-email-sign-in"></span>
           <input type="password" autocomplete="off" id="password-login" class="password" placeholder="Password">
+          <span class='error-message' id="error-password-sign-in"></span>
           <input class="sign-in-button" type="submit" value="Sign In">
           <a class="registration-button" href="/registration">Registration</a>
       </form>
@@ -40,6 +42,8 @@
 <script>
     const formLogin = document.getElementById('login');
     formLogin.addEventListener('submit', login);
+    const error_email_signin = document.getElementById('error-email-sign-in');
+    const error_password_signin = document.getElementById('error-password-sign-in');
 
     async function login(event){
         event.preventDefault();
@@ -58,7 +62,16 @@
         }).then((res) => res.json())
 
         if(result.status !== 'ok'){
-            alert(result.error);
+            switch(result.status){
+                case 'error-email': error_email_signin.textContent = result.error;
+                                    error_password_signin.textContent = null;
+                    break;
+                case 'error-password':  error_email_signin.textContent = null;
+                                        error_password_signin.textContent = result.error;
+                    break;
+                default: error_email_signin.textContent = null;
+                         error_password_signin.textContent = null;
+            }
         }else{
              document.cookie = `user=${JSON.stringify(result.user)}`;
             document.cookie = `token=${result.token}`;
