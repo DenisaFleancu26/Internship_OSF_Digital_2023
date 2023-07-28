@@ -9,16 +9,20 @@
               <a class="button" href="/mens" >Mens</a>
             </div>
           </div>
-    <div class="sign-in">
-      <form id="login">
-          <input type="text" autocomplete="off" id="email-login" class="email" placeholder="Email">
-          <span class='error-message' id="error-email-sign-in"></span>
-          <input type="password" autocomplete="off" id="password-login" class="password" placeholder="Password">
-          <span class='error-message' id="error-password-sign-in"></span>
-          <input class="sign-in-button" type="submit" value="Sign In">
-          <a class="registration-button" href="/registration">Registration</a>
-      </form>
-    </div>
+    {{#if user}}
+      <p class="user-email">Hello, {{user}}!</p>
+    {{else}}
+      <div class="sign-in">
+        <form id="login">
+            <input type="text" autocomplete="off" id="email-login" class="email" placeholder="Email">
+            <span class='error-message' id="error-email-sign-in"></span>
+            <input type="password" autocomplete="off" id="password-login" class="password" placeholder="Password">
+            <span class='error-message' id="error-password-sign-in"></span>
+            <input class="sign-in-button" type="submit" value="Sign In">
+            <a class="registration-button" href="/registration">Registration</a>
+        </form>
+      </div>
+    {{/if}}
     
 </nav>
   <ol class="breadcrumbs">
