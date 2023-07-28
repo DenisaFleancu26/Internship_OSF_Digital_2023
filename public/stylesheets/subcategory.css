@@ -29,7 +29,7 @@ body{
     color: white;
     justify-content: center;
     background: linear-gradient(to right, rgb(253, 254, 255rgb(118, 182, 255)85));
-    cursor: pointer;
+    cursor: default;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
   }
