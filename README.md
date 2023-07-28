@@ -23,7 +23,7 @@ node --version
 ```
 3. Install the Node Modules:
 ```bash
-npm install node
+npm install
 ```
 4. Open a terminal and run the project with this command:
 ```bash
