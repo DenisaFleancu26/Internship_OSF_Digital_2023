@@ -22,9 +22,9 @@
     {{#if (greater pages.length 1)}}
         <ul class="pagination">
                     {{#if (equal current 1)}}
-                            <a class="current-page">FIRST</a>
+                            <a class="current-page" >&#8810;</a>
                         {{else}} 
-                            <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page=1">FIRST</a>
+                            <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page=1">&#8810;</a>
                     {{/if}}
                         {{#if (greater pages.length 6)}}
                             {{#if (and (greater current 4) (less current (substract pages.length 2)))}}
@@ -75,9 +75,9 @@
 
                 
                     {{#if (equal current pages.length)}}
-                            <a class="current-page">Last</a>
+                            <a class="current-page">&#8811;</a>
                         {{else}} 
-                            <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{pages.length}}">LAST</a>
+                            <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{pages.length}}">&#8811;</a>
                     {{/if}}
         </ul>
     {{/if}}
