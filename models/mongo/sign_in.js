@@ -25,7 +25,7 @@ async function signIn(res, email, password){
             },
             JWT_SECRET,
             {
-              expiresIn: '1m',
+              expiresIn: '1d',
             }
           );
           return res.json({ status: 'ok', user: user, token: token});
