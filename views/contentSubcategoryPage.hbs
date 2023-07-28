@@ -28,13 +28,13 @@
                     {{/if}}
                         {{#if (greater pages.length 6)}}
                             {{#if (and (greater current 4) (less current (substract pages.length 2)))}}
-                                <a class="page">...</a>
+                                <a class="more">...</a>
                                 <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current 2}}">{{substract current 2}}</a>
                                 <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current 1}}">{{substract current 1}}</a>
                                 <a class="current-page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{current}}">{{current}}</a>
                                 <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current -1}}">{{substract current -1}}</a>
                                 <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current -2}}">{{substract current -2}}</a>
-                                <a class="page">...</a>
+                                <a class="more">...</a>
                             {{/if}}
                                 {{#if (less current 5)}}
                                     {{#each pages}}
@@ -45,12 +45,12 @@
                                                 <a class="current-page" href="/{{../isCategoryPage}}/{{../isSubcategoryPage}}?page={{../current}}">{{../current}}</a>
                                                 <a class="page" href="/{{../isCategoryPage}}/{{../isSubcategoryPage}}?page={{add ../current 1}}">{{add ../current 1}}</a>
                                                 <a class="page" href="/{{../isCategoryPage}}/{{../isSubcategoryPage}}?page={{add ../current 2}}">{{add ../current 2}}</a>
-                                                <a class="page">...</a>
+                                                <a class="more">...</a>
                                         {{/if}}
                                     {{/each}}  
                                 {{/if}}
                                 {{#if (greater current (substract pages.length 3))}}
-                                    <a class="page">...</a>
+                                    <a class="more">...</a>
                                     <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current 3}}">{{substract current 3}}</a>
                                     <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current 2}}">{{substract current 2}}</a>
                                     <a class="page" href="/{{isCategoryPage}}/{{isSubcategoryPage}}?page={{substract current 1}}">{{substract current 1}}</a>

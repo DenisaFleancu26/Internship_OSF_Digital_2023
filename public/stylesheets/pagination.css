@@ -4,7 +4,7 @@
     padding-bottom: 10px;
 }
 
-.page{
+.page, .more{
   color: black;
   float: left;
   padding: 5px 10px;
@@ -24,5 +24,8 @@
     box-shadow: -2px -1px 8px 0px #1784ddbc, 2px 1px 8px 0px rgb(95 157 231 / 48%);
     cursor:default;
    }
+.more{
+  cursor: default;
+}
 
 
