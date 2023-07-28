@@ -3,8 +3,9 @@ const router = express.Router();
 const { findCategoryName } = require('../models/mongo/findCategory');
 const { findSubcategoryProducts } = require('../models/mongo/findSubcategoryProducts');
 let title = '';
+const authenticateToken = require('../models/mongo/authenticateToken');
 
-router.get('/:category/:subcategory', async function(req, res, next){
+router.get('/:category/:subcategory',authenticateToken, async function(req, res, next){
 
     try{
       const { length, products} = await findSubcategoryProducts(req.params.subcategory, req.query.page || 1);
@@ -16,6 +17,11 @@ router.get('/:category/:subcategory', async function(req, res, next){
 
       const pageNumbers = Array.from({ length: Math.ceil(length / 6) }, (_, index) => index + 1);
 
+      let user = null;
+      if (req.user) {
+        user = req.user.email;
+      }
+
       res.render('contentSubcategoryPage', { 
         layout: 'layout', 
         title: title, 
@@ -24,7 +30,8 @@ router.get('/:category/:subcategory', async function(req, res, next){
         isSubcategoryPage: res.locals.isSubcategoryPage, 
         subcategoryName: title,
         current: Number(page),
-        pages: pageNumbers
+        pages: pageNumbers,
+        user: user,
       });
 
     }catch(error){
