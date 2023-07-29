@@ -48,7 +48,7 @@ async function register( res, email, password, confirm_password){
         if(error.code === 11000){
             return res.json({ status: 'error-email', error:'Email already in use!'})
         }
-        throw error
+        throw new Error("Error creating the user");
     }
 
 }
