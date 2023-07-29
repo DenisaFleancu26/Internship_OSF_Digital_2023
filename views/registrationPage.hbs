@@ -62,8 +62,7 @@
         }else{
             document.cookie = `user=${JSON.stringify(result.user)}`;
             document.cookie = `token=${result.token}`;
-
-            window.location.href = '/';
+            window.location.reload();
         }
     }
 </script>
