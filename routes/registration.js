@@ -1,13 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const register = require('../models/mongo/register');
+const authenticateToken = require('../models/mongo/authenticateToken');
 
-router.get('/registration', (req, res) => {
+router.get('/registration', authenticateToken, (req, res) => {
+  
+  let user = null;
+  
+  if (req.user) {
+    user = req.user.email;
+  }
   res.render('registrationPage', { 
     layout: 'layout', 
     title: "Registration", 
     categories: null,
-    isRegistrationPage: true
+    isRegistrationPage: true,
+    user: user
   });
 });
 
